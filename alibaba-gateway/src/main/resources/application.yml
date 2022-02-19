@@ -1,0 +1,27 @@
+
+#规划gateWay注册到到nacos上的服务应用名称
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      discovery:
+        locator:
+          # 能否通过微服务进行服务处理
+          enabled: false
+          # 是否走网关
+      enabled: true
+  profiles:
+    #active: my-before-accurate
+#    active: my-time-factory
+    #active: mypath-predicate
+    active: path-accurate
+#    active: tuling-timeBetween
+
+
+#规划GateWay的服务端口
+server:
+  port: 8888

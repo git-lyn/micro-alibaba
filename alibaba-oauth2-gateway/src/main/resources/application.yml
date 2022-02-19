@@ -1,0 +1,28 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: auth-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+          enabled: true
+      routes:
+       - id: product_center
+         uri: lb://product-server
+         predicates:
+            - Path=/product/**
+       - id: order_center
+         uri: lb://order-server
+         predicates:
+            - Path=/order/**
+       - id: auth_center
+         uri: lb://auth-server
+         predicates:
+           - Path=/oauth/**
+
+
+

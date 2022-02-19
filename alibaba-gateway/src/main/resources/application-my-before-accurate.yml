@@ -1,0 +1,17 @@
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: before-route #id必须要唯一
+#          uri: lb://gateway-order #这里可以使用负载均衡的写法
+#          predicates:
+#            - Before=2010-12-16T15:53:22.999+08:00[Asia/Shanghai]
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: my-before-accurate
+          uri: lb://gateway-order #这里可以使用负载均衡的写法
+          predicates:
+            - Before=2010-12-16T15:53:22.999+08:00[Asia/Shanghai]

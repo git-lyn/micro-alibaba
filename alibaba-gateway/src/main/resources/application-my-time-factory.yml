@@ -1,0 +1,26 @@
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: my-time
+#          uri: lb://gateway-order
+#          predicate:
+#            - TimeBetween=上午7:00,下午11:00
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: my-time-factory #id必须要唯一
+          #uri: lb://product-center
+          uri: lb://gateway-order
+          predicates:
+            #当前请求的时间必须在早上7点到 晚上11点 http://localhost:8888/selectProductInfoById/1
+            #才会被转发
+            #到http://product-center/selectProductInfoById/1
+            #- TulingTimeBetween=上午7:00,下午11:00
+            # MyTimeBetween  指定的 MyTimeBetweenRoutePredicateFactory  前半段 MyTimeBetween factory名字
+            - MyTimeBetween=上午7:00,下午11:00
+#        - id: my-time-filter
+#          uri: lb://gateway-order
+          filters:
+              - AddRequestHeader=X-Request-Foo, BarRequestHeader

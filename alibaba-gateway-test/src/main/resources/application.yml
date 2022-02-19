@@ -1,0 +1,47 @@
+server:
+  port: 8888
+
+# gateway注册到nacos上的服务应用名称
+spring:
+  application:
+    name: test-gateway
+  cloud:
+    nacos:
+      discovery:
+        # gateway注册到nacos
+        server-addr: localhost:8848
+    gateway:
+      discovery:
+        locator:
+          # 开启gateway从nacos获取服务器列表
+          enabled: true
+  # 使用断言过滤器工厂
+  profiles:
+    active: path-predicate
+
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: path-predicate
+#          uri: lb://gateway-order
+#          predicates:
+#            - Path=/myorder/**
+
+#      routes:
+#        - id: my-path-accurate #id必须要唯一
+#          uri: lb://gateway-order
+#          predicates:
+#            - Path=/myorder/**
+
+
+# 开启acutor端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      # 打开端点详情
+      show-details: always

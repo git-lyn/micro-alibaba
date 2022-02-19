@@ -1,0 +1,10 @@
+server:
+  port: 6666
+spring:
+  application:
+    name: test-oauth-server
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848

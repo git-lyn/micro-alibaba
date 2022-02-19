@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: path-predicate
+          uri: lb://gateway-order
+          predicates:
+          - Path=/myorder/**
