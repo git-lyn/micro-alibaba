@@ -24,6 +24,7 @@
         <module>alibaba-gateway-test</module>
         <module>my-alibaba-oauth2-server</module>
         <module>mycloud-security</module>
+        <module>security-common</module>
         <!--        <module>tuling-3-springcloud-alibaba-demo</module>-->
     </modules>
     <parent>
